@@ -1,0 +1,32 @@
+<div class="center-block form-group has-success">
+  <!-- view -->
+  <form id="form_post" class="form_post" action="" method="post">
+    <input type="text" id="todo_text" class="todo_text" />
+    <button type="submit" id="submit" class="submit btn btn-success btn-sm">
+      <span class="glyphicon glyphicon-send"></span>&nbsp;登録
+    </button>
+    <div class="message"></div>
+  </form>
+</div>
+
+
+<div class="container">
+  <table id="todo" class="table">
+    {{!-- <table> --}}
+    <thead>
+      <tr>
+        <th>テキスト</th>
+        <th class="button_list">削除</th>
+        <th class="button_list">編集</th>
+      </tr>
+    </thead>
+    <tbody class="todo_load">
+      <tr>
+        <td class="loading">
+          Loading...
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p><button class="all_delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span>&nbsp;一括削除</button></p>
+</div>

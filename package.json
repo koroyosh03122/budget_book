@@ -1,0 +1,21 @@
+{
+  "name": "boook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "chartist": "^0.9.4",
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "highcharts": "0.0.9",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "sequelize": "^3.9.0"
+  }
+}

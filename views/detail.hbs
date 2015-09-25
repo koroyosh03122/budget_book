@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>ToDo詳細</h2>
+
+  <h3 class="detail_id" data-id="{{id}}">
+    id: {{id}}
+  </h3>
+  <div class="alert alert-danger hidden error_msg" role="alert"></div>
+  <textarea class="detail_text">
+    text: Loading...
+  </textarea>
+  <span class="br">
+    &nbsp;
+  </span>
+
+
+  <button type="button" id="detail_delete" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">
+    <span class="glyphicon glyphicon-trash"></span>
+    &nbsp;削除
+  </button>
+
+  <button type="button" id="detail_edit" class="btn btn-primary btn-lg">
+    <span class="glyphicon glyphicon-pencil"></span>
+    &nbsp;編集
+  </button>
+
+
+  <button id="top" class="btn btn-info btn-lg">
+    <span class="glyphicon glyphicon-list-alt"></span>
+    一覧へ
+  </button>
+
+</div>
