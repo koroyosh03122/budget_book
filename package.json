@@ -1,5 +1,5 @@
 {
-  "name": "boook",
+  "name": "budeget_book",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,12 +11,13 @@
   "dependencies": {
     "body-parser": "^1.14.0",
     "chartist": "^0.9.4",
-    "express": "^4.13.3",
+    "express": "^4.12.4",
     "express-handlebars": "^2.0.1",
+    "handlebars": "^4.0.3",
     "highcharts": "0.0.9",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
-    "mysql": "^2.9.0",
+    "mysql": "^2.7.0",
     "sequelize": "^3.9.0"
   }
 }
