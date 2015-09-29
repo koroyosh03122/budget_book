@@ -23,7 +23,12 @@
     <tbody class="todo_load">
       <tr>
         <td class="loading">
-          Loading...
+          {{!-- Loading... --}}
+          {{#each costsList}}
+            <li>{{this.id}}
+            -
+            {{this.costs}}</li>
+          {{/each}}
         </td>
       </tr>
     </tbody>

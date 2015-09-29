@@ -7,10 +7,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 var handlebars = require('express-handlebars');
 
-app.set("views", __dirname + "/src/public/views/");
+app.set("views", "./src/views");
 
 app.engine('.hbs', handlebars({
     extname: '.hbs',
+    layoutsDir: "src/views/layouts",
     defaultLayout: 'default'
 }));
 
