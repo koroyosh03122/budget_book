@@ -1,7 +1,13 @@
 <div class="center-block form-group has-success">
   <!-- view -->
   <form id="form_post" class="form_post" action="" method="post">
-    <input type="text" id="todo_text" class="todo_text" />
+    <input type="text" id="budget_text" class="budget_text" />
+    <select>
+    {{#each groupList}}
+      <option value="{{this.id}}">{{this.name}}</option>
+    {{/each}}
+    </select>
+    {{!-- <input type="text" id="budget_text" class="budget_text" /> --}}
     <button type="submit" id="submit" class="submit btn btn-success btn-sm">
       <span class="glyphicon glyphicon-send"></span>&nbsp;登録
     </button>

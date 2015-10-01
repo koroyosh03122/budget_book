@@ -2,26 +2,52 @@ module.exports = function(app, models) {
 
   // 全件取得 スラッシュのとき
   app.get('/', function(req, res) {
-    var table = 'costs';
     var userId = 3;
+    models.group.findAll().then(function(groups){
+      return models.costs.findAll({
+        include: [{
+          model: models.users,
+          where: {id: userId}
+        },{
+          model: models.group
+        }]
+      }).then(function(costs) {
+        var _costs = costs.map(function(cost) {
+          return cost.toJSON();
+        });
+        var _groups = groups.map(function(group){
+          return group.toJSON();
+        });
+        return [_costs, _groups];
+      });
 
-    var _include =  [{
-      model: models.users,
-      where: {id: userId}
-    }];
-    console.log(_include);
-    models[table].findAll({
-      include: _include
-    }).then(function(results) {
+    }).spread(function(costs, groups) {
       res.render("index", {
         scripts: ["app"],
-        costsList: results.map(function(result) {
-          console.log(result.toJSON());
-          return result.toJSON()
-        })
+        costsList: costs,
+        groupList: groups
       });
     });
   });
+    //
+    // var _include =  [{
+    //   model: models.users,
+    //   where: {id: userId}
+    // },{
+    //   model: models.group
+    // }];
+    // // console.log(_include);
+    // models[table].findAll({
+    //   include: _include
+    // }).then(function(results) {
+    //   res.render("index", {
+    //     scripts: ["app"],
+    //     costsList: results.map(function(result) {
+    //       console.log(result.toJSON());
+    //       return result.toJSON();
+    //     })
+    //   });
+    // });
   // models.costs.findAll({
   //   include: [{
   //     model: models.group,
