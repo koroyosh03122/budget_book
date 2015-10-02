@@ -1,12 +1,12 @@
 <div class="center-block form-group has-success">
   <!-- view -->
   <form id="form_post" class="form_post" action="/post" method="post">
-    <input type="text" id="budget_text" class="budget_text" name ="costText"/>
     <select name="groupId">
     {{#each groupList}}
       <option value="{{this.id}}">{{this.name}}</option>
     {{/each}}
     </select>
+    <input type="number" id="budget_text" class="budget_text" name ="costText" pattern="^[0-9]+$" min="0" />
     <button type="submit" id="submit" class="submit btn btn-success btn-sm">
       <span class="glyphicon glyphicon-send"></span>&nbsp;登録
     </button>
@@ -16,22 +16,24 @@
 
 
 <div class="container">
-  <table id="todo" class="table">
-    {{!-- <table> --}}
+  <table id="budget" class="table">
     <thead>
       <tr>
-        <th>テキスト</th>
+        <th>日付</th>
+        <th>区分</th>
+        <th>金額</th>
         <th class="button_list">削除</th>
         <th class="button_list">編集</th>
       </tr>
     </thead>
-    <tbody class="todo_load">
+    <tbody class="budget_load">
       <tr>
-        <td class="loading">
-          {{!-- Loading... --}}
+        <td>
           {{#each costsList}}
             <p>
               <a href="{{this.id}}">
+                {{this.id}}
+                -
                 {{this.costText}}
               </a>
             </p>
