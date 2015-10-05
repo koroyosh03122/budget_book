@@ -5,6 +5,7 @@
     {{#each groupList}}
       <option value="{{this.id}}">{{this.name}}</option>
     {{/each}}
+    {{groupList}}
     </select>
     <input type="number" id="budget_text" class="budget_text" name ="costText" pattern="^[0-9]+$" min="0" />
     <button type="submit" id="submit" class="submit btn btn-success btn-sm">
@@ -26,15 +27,19 @@
         <th class="button_list">編集</th>
       </tr>
     </thead>
+    {{groupList}}: {{1}}
+
     <tbody class="budget_load">
       <tr>
         <td>
           {{#each costsList}}
             <p>
-              <a href="{{this.id}}">
+              <a href="detail/{{this.id}}">
                 {{this.id}}
                 -
                 {{this.costText}}
+                -
+                {{this.groupId}}
               </a>
             </p>
           {{/each}}
