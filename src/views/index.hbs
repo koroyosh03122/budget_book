@@ -23,8 +23,8 @@
         <th>日付</th>
         <th>区分</th>
         <th>金額</th>
-        {{!-- <th class="button_list">削除</th>
-        <th class="button_list">編集</th> --}}
+        <th class="button_list">編集</th>
+        <th class="button_list">削除</th>
       </tr>
     </thead>
     <tbody class="budget_load">
@@ -33,12 +33,22 @@
           <td>
             <a href="detail/{{this.id}}">
                 {{cast this.createdAt}}
-                -
-                {{this.group.name}}
-                -
-                {{this.costText}}
-              </a>
+            </a>
           </td>
+          <td>
+            {{this.group.name}}
+          </td>
+          <td>
+            {{this.costText}}円
+          </td>
+          <td class="button">
+            <button data-id="{{this.id}}" class="edit btn btn-primary btn-sm">
+              <span class="glyphicon glyphicon-pencil"></span>&nbsp;編集</button>
+          </td>
+        <td class="button">
+          <button data-id="{{this.id}}" class="delete btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-trash"></span>&nbsp;削除</button>
+        </td>
         </tr>
       {{/each}}
     </tbody>

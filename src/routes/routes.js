@@ -5,9 +5,6 @@ function chkFormText(text) {
 };
 
 module.exports = function(app, models) {
-
-
-
     // 全件取得 スラッシュのとき
     app.get('/', function(req, res) {
       var userId = 3;
@@ -32,8 +29,6 @@ module.exports = function(app, models) {
           return [_costs, _groups];
         });
       }).spread(function(costs, groups) {
-        console.log(costs[1].createdAt);
-
         res.render("index", {
           scripts: ["app"],
           costsList: costs,
@@ -43,13 +38,11 @@ module.exports = function(app, models) {
                 var dateStamp = new Date(date);
                 var fullYear = dateStamp.getFullYear();
                 var month = dateStamp.getMonth() + 1;
-                var day = dateStamp.getDay();
+                var date = dateStamp.getDate();
                 var hour = dateStamp.getHours();
                 var min = dateStamp.getMinutes();
-                dateStamp = fullYear + '-' + month + '-' + day + ' ' + hour + ':' + min;
-                console.log(dateStamp);
+                dateStamp = fullYear + '-' + month + '-' + date + ' ' + hour + ':' + min;
                 return dateStamp;
-                // return (new Date(date)).format("yyyy-MM-dd");
                }
           }
         });
@@ -59,21 +52,51 @@ module.exports = function(app, models) {
 
 
 
-    // ==========================================
+
+
+
+
     app.get('/detail/:id', function(req, res) {
       var id = req.params.id;
+      var userId = 3;
+      console.log(id);
 
       models.costs.findOne({
+        where: {
+          id: id
+        },
         include: [{
           model: models.users,
           where: {
-            id: id
+            id: userId
           }
         }]
       }).then(function(results) {
-
+        console.log(results.toJSON());
+        res.render("detail", {
+          id: parseInt(req.params.id),
+          scripts: ["detail", "app"]
+        });
       });
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // // 1件登録(内容)
     app.post('/post', function(req, res) {
       // parseInt
