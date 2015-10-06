@@ -6,18 +6,7 @@ function chkFormText(text) {
 
 module.exports = function(app, models) {
 
-    // function getArr(groupId) {
-    //   var groupArr = [];
-    //   models.group.findAll().then(function(groups) {
-    //     groups.map(function(group) {
-    //       groupArr.push(group.toJSON());
-    //     });
-    //     // console.log( groupArr[groupId - 1]);
-    //
-    //     return groupArr[groupId - 1];
-    //   });
-    // }
-    // console.log(getArr(1));
+
 
     // 全件取得 スラッシュのとき
     app.get('/', function(req, res) {
@@ -39,16 +28,31 @@ module.exports = function(app, models) {
           var _groups = groups.map(function(group) {
             return group.toJSON();
           });
+
           return [_costs, _groups];
         });
       }).spread(function(costs, groups) {
+        console.log(costs[1].createdAt);
 
         res.render("index", {
           scripts: ["app"],
           costsList: costs,
-          groupList: groups
+          groupList: groups,
+          helpers: {
+              cast: function (date) {
+                var dateStamp = new Date(date);
+                var fullYear = dateStamp.getFullYear();
+                var month = dateStamp.getMonth() + 1;
+                var day = dateStamp.getDay();
+                var hour = dateStamp.getHours();
+                var min = dateStamp.getMinutes();
+                dateStamp = fullYear + '-' + month + '-' + day + ' ' + hour + ':' + min;
+                console.log(dateStamp);
+                return dateStamp;
+                // return (new Date(date)).format("yyyy-MM-dd");
+               }
+          }
         });
-        // console.log(groups);
 
       });
     });

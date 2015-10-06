@@ -2,12 +2,12 @@
   <!-- view -->
   <form id="form_post" class="form_post" action="/post" method="post">
     <select name="groupId">
-    {{#each groupList}}
-      <option value="{{this.id}}">{{this.name}}</option>
-    {{/each}}
-    {{groupList}}
+      {{#each groupList}}
+        <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+      {{groupList}}
     </select>
-    <input type="number" id="budget_text" class="budget_text" name ="costText" pattern="^[0-9]+$" min="0" />
+    <input type="number" id="budget_text" class="budget_text" name="costText" pattern="^[0-9]+$" min="0" />
     <button type="submit" id="submit" class="submit btn btn-success btn-sm">
       <span class="glyphicon glyphicon-send"></span>&nbsp;登録
     </button>
@@ -23,29 +23,28 @@
         <th>日付</th>
         <th>区分</th>
         <th>金額</th>
-        <th class="button_list">削除</th>
-        <th class="button_list">編集</th>
+        {{!-- <th class="button_list">削除</th>
+        <th class="button_list">編集</th> --}}
       </tr>
     </thead>
-    {{groupList}}: {{1}}
-
     <tbody class="budget_load">
-      <tr>
-        <td>
-          {{#each costsList}}
-            <p>
-              <a href="detail/{{this.id}}">
-                {{this.id}}
+      {{#each costsList}}
+        <tr>
+          <td>
+            <a href="detail/{{this.id}}">
+                {{cast this.createdAt}}
+                -
+                {{this.group.name}}
                 -
                 {{this.costText}}
-                -
-                {{this.groupId}}
               </a>
-            </p>
-          {{/each}}
-        </td>
-      </tr>
+          </td>
+        </tr>
+      {{/each}}
     </tbody>
   </table>
-  <p><button class="all_delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span>&nbsp;一括削除</button></p>
+  <p>
+    <button class="all_delete btn btn-danger btn-sm">
+      <span class="glyphicon glyphicon-trash"></span>&nbsp;一括削除</button>
+  </p>
 </div>
